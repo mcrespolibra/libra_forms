@@ -10,63 +10,60 @@
         .form-group { margin-bottom: 15px; }
         label { display: block; margin-bottom: 5px; font-weight: bold; }
         input, select { width: 100%; padding: 8px; box-sizing: border-box; }
-        .checkbox-group, .radio-group { display: flex; flex-wrap: wrap; gap: 10px; }
-        .checkbox-group input, .radio-group input { width: auto; }
         button { padding: 10px 20px; }
     </style>
 </head>
 <body>
-    <form>
+    <form action="mailto:m.crespo@libra-advisors.com" method="post" enctype="text/plain">
         <h2>Individual Account Opening Form (Charles Schwab)</h2>
 
-        <div class="form-group">
-            <label>Account Type:</label>
-            <select>
-                <option>Schwab One (Individual Account)</option>
-                <option selected>Schwab One with Margin (ALWAYS THIS ACCOUNT FOR LEVERAGE)</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>Registration:</label>
-            <input type="text" value="Individual" readonly>
-        </div>
-
         <h3>Account Holder Information</h3>
-        <div class="form-group"><label>Full Name:</label><input type="text"></div>
-        <div class="form-group"><label>Social Security Number:</label><input type="text"></div>
-        <div class="form-group"><label>Date of Birth:</label><input type="date"></div>
+        <div class="form-group"><label>First Name:</label><input type="text" name="First Name"></div>
+        <div class="form-group"><label>Middle Name (optional):</label><input type="text" name="Middle Name"></div>
+        <div class="form-group"><label>Last Name:</label><input type="text" name="Last Name"></div>
+        <div class="form-group"><label>Social Security Number:</label><input type="text" name="Social Security Number"></div>
+        <div class="form-group"><label>Date of Birth:</label><input type="date" name="Date of Birth"></div>
 
         <div class="form-group">
-            <label>Residential Address:</label>
-            <input type="text" placeholder="Street and Number">
-            <input type="text" placeholder="City">
-            <input type="text" placeholder="State/Province">
-            <input type="text" placeholder="Zip Code">
-            <input type="text" placeholder="Country">
+            <label>Passport / Driver’s License / Government ID:</label>
+            <input type="text" name="Government ID">
         </div>
 
         <div class="form-group">
             <label>Citizenship:</label>
-            <select>
-                <option>U.S.</option>
-                <option>Other</option>
+            <select name="Citizenship" onchange="document.getElementById('otherCountry').style.display = this.value === 'Other' ? 'block' : 'none';">
+                <option value="U.S.">U.S.</option>
+                <option value="Other">Other</option>
             </select>
+            <input type="text" id="otherCountry" name="Other Citizenship Country" placeholder="Specify other country" style="display:none; margin-top:10px;">
         </div>
 
         <div class="form-group">
-            <label>Passport / Driver’s License / Government ID:</label>
-            <input type="text">
+            <label>Country of Legal Residence:</label>
+            <select name="Country of Legal Residence" onchange="document.getElementById('legalResidence').style.display = this.value === 'Other' ? 'block' : 'none';">
+                <option value="U.S.">U.S.</option>
+                <option value="Other">Other</option>
+            </select>
+            <input type="text" id="legalResidence" name="Other Legal Residence" placeholder="Specify other country" style="display:none; margin-top:10px;">
+        </div>
+
+        <div class="form-group">
+            <label>Residential Address:</label>
+            <input type="text" name="Street and Number" placeholder="Street and Number">
+            <input type="text" name="City" placeholder="City">
+            <input type="text" name="State/Province" placeholder="State/Province">
+            <input type="text" name="Zip Code" placeholder="Zip Code">
+            <input type="text" name="Country" placeholder="Country">
         </div>
 
         <h3>Contact Information</h3>
-        <div class="form-group"><label>Primary Phone:</label><input type="tel"></div>
-        <div class="form-group"><label>Email Address:</label><input type="email"></div>
+        <div class="form-group"><label>Primary Phone:</label><input type="tel" name="Primary Phone"></div>
+        <div class="form-group"><label>Email Address:</label><input type="email" name="Email Address"></div>
 
-        <h3>Employment and Source of Income</h3>
+        <h3>Employment Information</h3>
         <div class="form-group">
             <label>Employment Status:</label>
-            <select>
+            <select name="Employment Status">
                 <option>Employed</option>
                 <option>Self-employed</option>
                 <option>Retired</option>
@@ -76,29 +73,31 @@
             </select>
         </div>
 
-        <div class="form-group"><label>Occupation/Profession:</label><input type="text"></div>
-        <div class="form-group"><label>Employer or Company Name:</label><input type="text"></div>
+        <div class="form-group"><label>Occupation/Profession:</label><input type="text" name="Occupation"></div>
+        <div class="form-group"><label>Employer or Company Name:</label><input type="text" name="Employer Name"></div>
 
         <div class="form-group">
             <label>Employer’s Address:</label>
-            <input type="text" placeholder="Street and Number">
-            <input type="text" placeholder="City">
-            <input type="text" placeholder="State/Province">
-            <input type="text" placeholder="Zip Code">
-            <input type="text" placeholder="Country">
+            <input type="text" name="Employer Street and Number" placeholder="Street and Number">
+            <input type="text" name="Employer City" placeholder="City">
+            <input type="text" name="Employer State/Province" placeholder="State/Province">
+            <input type="text" name="Employer Zip Code" placeholder="Zip Code">
+            <input type="text" name="Employer Country" placeholder="Country">
         </div>
 
-        <h3>Sources of Account Income</h3>
-        <div class="checkbox-group">
-            <label><input type="checkbox"> Salary/Savings</label>
-            <label><input type="checkbox"> Investments</label>
-            <label><input type="checkbox"> Capital Gains</label>
-            <label><input type="checkbox"> Social Security Benefits</label>
-            <label><input type="checkbox"> Gifts</label>
-            <label><input type="checkbox"> Sale of Property or Business</label>
-            <label><input type="checkbox"> Gambling/Lottery</label>
-            <label><input type="checkbox"> Family/Inheritance</label>
-            <label>Other: <input type="text"></label>
+        <div class="form-group">
+            <label>Sources of Account Income:</label>
+            <select name="Sources of Income">
+                <option>Salary/Savings</option>
+                <option>Investments</option>
+                <option>Capital Gains</option>
+                <option>Social Security Benefits</option>
+                <option>Gifts</option>
+                <option>Sale of Property or Business</option>
+                <option>Gambling/Lottery</option>
+                <option>Family/Inheritance</option>
+                <option>Other</option>
+            </select>
         </div>
 
         <button type="submit">Submit</button>
