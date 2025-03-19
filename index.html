@@ -10,6 +10,8 @@
         .form-group { margin-bottom: 15px; }
         label { display: block; margin-bottom: 5px; font-weight: bold; }
         input, select { width: 100%; padding: 8px; box-sizing: border-box; }
+        .checkbox-group { display: flex; flex-wrap: wrap; gap: 10px; }
+        .checkbox-group input { width: auto; }
         button { padding: 10px 20px; }
     </style>
 </head>
@@ -85,8 +87,8 @@
             <input type="text" name="Employer Country" placeholder="Country">
         </div>
 
+        <h3>Sources of Account Income</h3>
         <div class="form-group">
-            <label>Sources of Account Income:</label>
             <select name="Sources of Income">
                 <option>Salary/Savings</option>
                 <option>Investments</option>
@@ -98,6 +100,24 @@
                 <option>Family/Inheritance</option>
                 <option>Other</option>
             </select>
+        </div>
+
+        <h3>Trusted Contact Person</h3>
+        <div class="form-group"><label>Full Name:</label><input type="text" name="Trusted Contact Name"></div>
+        <div class="form-group"><label>Relationship to Account Holder:</label><input type="text" name="Trusted Contact Relationship"></div>
+        <div class="form-group"><label>Contact Phone:</label><input type="tel" name="Trusted Contact Phone"></div>
+        <div class="form-group"><label>Email Address:</label><input type="email" name="Trusted Contact Email"></div>
+        <div class="form-group"><label>Contact Address:</label><input type="text" name="Trusted Contact Address"></div>
+
+        <h3>Account Purpose (select at least one):</h3>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="Account Purpose" value="General Investing"> General Investing</label>
+            <label><input type="checkbox" name="Account Purpose" value="Estate Planning Investing"> Estate Planning Investing</label>
+            <label><input type="checkbox" name="Account Purpose" value="Tax Planning Investing"> Tax Planning Investing (e.g., municipal bonds)</label>
+            <label><input type="checkbox" name="Account Purpose" value="College Education Investing"> College Education Investing</label>
+            <label><input type="checkbox" name="Account Purpose" value="Retirement Investing"> Retirement Investing</label>
+            <label><input type="checkbox" name="Account Purpose" value="Pooled Assets Investing"> Pooled Assets Investing (e.g., collective funds)</label>
+            <label>Other: <input type="text" name="Other Account Purpose"></label>
         </div>
 
         <button type="submit">Submit</button>
